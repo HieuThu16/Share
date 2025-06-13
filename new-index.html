@@ -1,471 +1,607 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Cá Nhân - Chia sẻ kiến thức</title>    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Cá Nhân - Chia sẻ kiến thức</title>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f8f9fa;
-        }
+    <!-- Meta Tags for SEO -->
+    <meta
+      name="description"
+      content="Blog cá nhân chia sẻ kiến thức từ YouTube, review sách hay và kinh nghiệm học tập. Nơi tổng hợp những bài học bổ ích."
+    />
+    <meta
+      name="keywords"
+      content="blog, học tập, YouTube, review sách, kiến thức, chia sẻ"
+    />
+    <meta name="author" content="Blog Owner" />
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:title" content="Blog Cá Nhân - Chia sẻ kiến thức" />
+    <meta
+      property="og:description"
+      content="Nơi chia sẻ kiến thức từ YouTube, review sách và trải nghiệm học tập"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://share-hzfqpdzpu-hieuthu16s-projects.vercel.app/"
+    />
 
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f8f9fa;
+      }
+
+      /* Header */
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+      }
+
+      .header p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+
+      /* Navigation */
+      .navbar {
+        background: white;
+        padding: 1rem 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 2rem;
+      }
+
+      /* Sections */
+      .section {
+        display: none;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      .section.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #333;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 2px;
+      }
+
+      /* Cards Grid */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid #e9ecef;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .card-content {
+        padding: 1.5rem;
+      }
+
+      .card-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .card-text {
+        color: #666;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .card-meta {
+        font-size: 0.9rem;
+        color: #999;
+        border-top: 1px solid #eee;
+        padding-top: 1rem;
+      }
+
+      /* Home Welcome */
+      .welcome {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        background: white;
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .welcome h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .welcome p {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 1.5rem;
+      }
+
+      /* About Section */
+      .about-profile {
+        text-align: center;
+        background: white;
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 3rem;
+      }
+
+      .profile-avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: white;
+      }
+
+      .profile-name {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .profile-bio {
+        font-size: 1.1rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      /* Rating */
+      .rating {
+        color: #ffc107;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Footer */
+      .footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 4rem;
+      }
+
+      .footer p {
+        margin-bottom: 1rem;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .social-links a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
         .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Navigation */
-        .navbar {
-            background: white;
-            padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+          font-size: 2rem;
         }
 
         .nav {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            gap: 2rem;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
         }
 
-        .nav-link {
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Container */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
+          padding: 2rem 1rem;
         }
 
-        /* Sections */
-        .section {
-            display: none;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 2px;
-        }
-
-        /* Cards Grid */
         .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+          grid-template-columns: 1fr;
         }
 
-        .card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 1px solid #e9ecef;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-
-        .card-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .card-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .card-text {
-            color: #666;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .card-meta {
-            font-size: 0.9rem;
-            color: #999;
-            border-top: 1px solid #eee;
-            padding-top: 1rem;
-        }
-
-        /* Home Welcome */
-        .welcome {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .welcome h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .welcome p {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-
-        /* About Section */
+        .welcome,
         .about-profile {
-            text-align: center;
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 3rem;
+          padding: 2rem;
         }
-
-        .profile-avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-        }
-
-        .profile-name {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .profile-bio {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* Rating */
-        .rating {
-            color: #ffc107;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 4rem;
-        }
-
-        .footer p {
-            margin-bottom: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: rgba(255,255,255,0.1);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .nav {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.5rem;
-            }
-
-            .container {
-                padding: 2rem 1rem;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .welcome,
-            .about-profile {
-                padding: 2rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header class="header">
-        <h1>Blog Cá Nhân</h1>
-        <p>Chia sẻ kiến thức từ YouTube, review sách và câu chuyện cá nhân</p>
+      <h1>Blog Cá Nhân</h1>
+      <p>Chia sẻ kiến thức từ YouTube, review sách và câu chuyện cá nhân</p>
     </header>
 
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-container">
-            <ul class="nav">
-                <li><a href="#" class="nav-link active" onclick="showSection('home')">Trang Chủ</a></li>
-                <li><a href="#" class="nav-link" onclick="showSection('youtube')">Bài Học YouTube</a></li>
-                <li><a href="#" class="nav-link" onclick="showSection('reviews')">Review Sách</a></li>
-                <li><a href="#" class="nav-link" onclick="showSection('about')">Thông Tin Về Tôi</a></li>
-            </ul>
-        </div>
+      <div class="nav-container">
+        <ul class="nav">
+          <li>
+            <a href="#" class="nav-link active" onclick="showSection('home')"
+              >Trang Chủ</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-link" onclick="showSection('youtube')"
+              >Bài Học YouTube</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-link" onclick="showSection('reviews')"
+              >Review Sách</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-link" onclick="showSection('about')"
+              >Thông Tin Về Tôi</a
+            >
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Main Content -->
-    <div class="container">        <!-- Trang Chủ -->
-        <section id="home" class="section active">
-            <div class="welcome">
-                <h2>Chào Mừng Bạn Đến Với Blog Của Tôi! 👋</h2>
-                <p>Đây là nơi tôi chia sẻ những điều thú vị học được từ YouTube, những cuốn sách hay và trải nghiệm cá nhân. Hy vọng bạn sẽ tìm thấy nhiều thông tin bổ ích tại đây!</p>
+    <div class="container">
+      <!-- Trang Chủ -->
+      <section id="home" class="section active">
+        <div class="welcome">
+          <h2>Chào Mừng Bạn Đến Với Blog Của Tôi! 👋</h2>
+          <p>
+            Đây là nơi tôi chia sẻ những điều thú vị học được từ YouTube, những
+            cuốn sách hay và trải nghiệm cá nhân. Hy vọng bạn sẽ tìm thấy nhiều
+            thông tin bổ ích tại đây!
+          </p>
+        </div>
+      </section>
+
+      <!-- Bài Học YouTube -->
+      <section id="youtube" class="section">
+        <h2 class="section-title">Bài Học Từ YouTube</h2>
+
+        <div class="cards-grid">
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop"
+              alt="Programming"
+              class="card-image"
+            />
+            <div class="card-content">
+              <h3 class="card-title">💻 Lập Trình Hiệu Quả</h3>
+              <p class="card-text">
+                Những mẹo hay và best practices trong lập trình từ các kênh như
+                Traversy Media, freeCodeCamp. Bao gồm clean code, design
+                patterns và debugging.
+              </p>
+              <div class="card-meta">
+                Nguồn: Traversy Media, freeCodeCamp • 2 ngày trước
+              </div>
             </div>
-        </section>
+          </div>
 
-        <!-- Bài Học YouTube -->
-        <section id="youtube" class="section">
-            <h2 class="section-title">Bài Học Từ YouTube</h2>
-            
-            <div class="cards-grid">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop" alt="Programming" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">💻 Lập Trình Hiệu Quả</h3>
-                        <p class="card-text">Những mẹo hay và best practices trong lập trình từ các kênh như Traversy Media, freeCodeCamp. Bao gồm clean code, design patterns và debugging.</p>
-                        <div class="card-meta">Nguồn: Traversy Media, freeCodeCamp • 2 ngày trước</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=200&fit=crop" alt="Productivity" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">⚡ Tăng Năng Suất Làm Việc</h3>
-                        <p class="card-text">Phương pháp Pomodoro, GTD và các kỹ thuật quản lý thời gian hiệu quả. Học từ Ali Abdaal và Thomas Frank về cách tối ưu hóa workflow.</p>
-                        <div class="card-meta">Nguồn: Ali Abdaal, Thomas Frank • 1 tuần trước</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=400&h=200&fit=crop" alt="Design" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">🎨 Thiết Kế UI/UX</h3>
-                        <p class="card-text">Nguyên tắc thiết kế giao diện, color theory và user experience. Học từ các designer chuyên nghiệp về cách tạo ra sản phẩm dễ sử dụng.</p>
-                        <div class="card-meta">Nguồn: Design Course, The Futur • 3 ngày trước</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=200&fit=crop" alt="Learning" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">🧠 Kỹ Thuật Học Tập</h3>
-                        <p class="card-text">Phương pháp Feynman, spaced repetition và active recall. Cách học hiệu quả và ghi nhớ lâu dài kiến thức mới.</p>
-                        <div class="card-meta">Nguồn: Study MD, Med School Insiders • 5 ngày trước</div>
-                    </div>
-                </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=200&fit=crop"
+              alt="Productivity"
+              class="card-image"
+            />
+            <div class="card-content">
+              <h3 class="card-title">⚡ Tăng Năng Suất Làm Việc</h3>
+              <p class="card-text">
+                Phương pháp Pomodoro, GTD và các kỹ thuật quản lý thời gian hiệu
+                quả. Học từ Ali Abdaal và Thomas Frank về cách tối ưu hóa
+                workflow.
+              </p>
+              <div class="card-meta">
+                Nguồn: Ali Abdaal, Thomas Frank • 1 tuần trước
+              </div>
             </div>
-        </section>
+          </div>
 
-        <!-- Review Sách -->
-        <section id="reviews" class="section">
-            <h2 class="section-title">Review Sách</h2>
-            
-            <div class="cards-grid">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=200&fit=crop" alt="Atomic Habits" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Atomic Habits - James Clear</h3>
-                        <div class="rating">⭐⭐⭐⭐⭐ 5/5</div>
-                        <p class="card-text">Cuốn sách kinh điển về xây dựng thói quen tích cực. Phương pháp 1% improvement mỗi ngày thực sự hiệu quả và có thể áp dụng ngay.</p>
-                        <div class="card-meta">Thể loại: Phát triển bản thân • Hoàn thành: 15/11/2024</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400&h=200&fit=crop" alt="Clean Code" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Clean Code - Robert C. Martin</h3>
-                        <div class="rating">⭐⭐⭐⭐⭐ 5/5</div>
-                        <p class="card-text">Bible của mọi lập trình viên. Những nguyên tắc viết code sạch, dễ đọc và dễ maintain. Must-read cho developer.</p>
-                        <div class="card-meta">Thể loại: Lập trình • Hoàn thành: 28/10/2024</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=200&fit=crop" alt="Sapiens" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Sapiens - Yuval Noah Harari</h3>
-                        <div class="rating">⭐⭐⭐⭐⭐ 5/5</div>
-                        <p class="card-text">Cuốn sách mở mang tầm mắt về lịch sử loài người. Harari giải thích một cách dễ hiểu về quá trình tiến hóa của xã hội và văn minh.</p>
-                        <div class="card-meta">Thể loại: Lịch sử, Khoa học • Hoàn thành: 05/12/2024</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop" alt="Deep Work" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Deep Work - Cal Newport</h3>
-                        <div class="rating">⭐⭐⭐⭐⭐ 5/5</div>
-                        <p class="card-text">Kỹ năng quan trọng nhất thế kỷ 21. Newport hướng dẫn cách tập trung sâu và tạo ra giá trị thực sự trong công việc.</p>
-                        <div class="card-meta">Thể loại: Năng suất, Tập trung • Hoàn thành: 20/01/2025</div>
-                    </div>
-                </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=400&h=200&fit=crop"
+              alt="Design"
+              class="card-image"
+            />
+            <div class="card-content">
+              <h3 class="card-title">🎨 Thiết Kế UI/UX</h3>
+              <p class="card-text">
+                Nguyên tắc thiết kế giao diện, color theory và user experience.
+                Học từ các designer chuyên nghiệp về cách tạo ra sản phẩm dễ sử
+                dụng.
+              </p>
+              <div class="card-meta">
+                Nguồn: Design Course, The Futur • 3 ngày trước
+              </div>
             </div>
-        </section>        <!-- Thông Tin Về Tôi -->
-        <section id="about" class="section">
-            <h2 class="section-title">Thông Tin Về Tôi</h2>
-            
-            <div class="about-profile">
-                <div class="profile-avatar">👨‍💻</div>
-                <h3 class="profile-name">Xin chào, tôi là Blog Owner!</h3>
-                <p class="profile-bio">
-                    Tôi là một người đam mê học hỏi và chia sẻ kiến thức. Với niềm yêu thích đọc sách, 
-                    xem các video giáo dục và khám phá những điều mới mẻ, tôi muốn tạo ra một không gian 
-                    để tổng hợp và chia sẻ những bài học quý giá mà mình thu được.
-                </p>
+          </div>
+
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=200&fit=crop"
+              alt="Learning"
+              class="card-image"
+            />
+            <div class="card-content">
+              <h3 class="card-title">🧠 Kỹ Thuật Học Tập</h3>
+              <p class="card-text">
+                Phương pháp Feynman, spaced repetition và active recall. Cách
+                học hiệu quả và ghi nhớ lâu dài kiến thức mới.
+              </p>
+              <div class="card-meta">
+                Nguồn: Study MD, Med School Insiders • 5 ngày trước
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
+
+      <!-- Review Sách -->
+      <section id="reviews" class="section">
+        <h2 class="section-title">Review Sách</h2>
+
+        <div class="cards-grid">
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=200&fit=crop"
+              alt="Atomic Habits"
+              class="card-image"
+            />
+            <div class="card-content">
+              <h3 class="card-title">Atomic Habits - James Clear</h3>
+              <div class="rating">⭐⭐⭐⭐⭐ 5/5</div>
+              <p class="card-text">
+                Cuốn sách kinh điển về xây dựng thói quen tích cực. Phương pháp
+                1% improvement mỗi ngày thực sự hiệu quả và có thể áp dụng ngay.
+              </p>
+              <div class="card-meta">
+                Thể loại: Phát triển bản thân • Hoàn thành: 15/11/2024
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400&h=200&fit=crop"
+              alt="Clean Code"
+              class="card-image"
+            />
+            <div class="card-content">
+              <h3 class="card-title">Clean Code - Robert C. Martin</h3>
+              <div class="rating">⭐⭐⭐⭐⭐ 5/5</div>
+              <p class="card-text">
+                Bible của mọi lập trình viên. Những nguyên tắc viết code sạch,
+                dễ đọc và dễ maintain. Must-read cho developer.
+              </p>
+              <div class="card-meta">
+                Thể loại: Lập trình • Hoàn thành: 28/10/2024
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=400&h=200&fit=crop"
+              alt="Sapiens"
+              class="card-image"
+            />
+            <div class="card-content">
+              <h3 class="card-title">Sapiens - Yuval Noah Harari</h3>
+              <div class="rating">⭐⭐⭐⭐⭐ 5/5</div>
+              <p class="card-text">
+                Cuốn sách mở mang tầm mắt về lịch sử loài người. Harari giải
+                thích một cách dễ hiểu về quá trình tiến hóa của xã hội và văn
+                minh.
+              </p>
+              <div class="card-meta">
+                Thể loại: Lịch sử, Khoa học • Hoàn thành: 05/12/2024
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=200&fit=crop"
+              alt="Deep Work"
+              class="card-image"
+            />
+            <div class="card-content">
+              <h3 class="card-title">Deep Work - Cal Newport</h3>
+              <div class="rating">⭐⭐⭐⭐⭐ 5/5</div>
+              <p class="card-text">
+                Kỹ năng quan trọng nhất thế kỷ 21. Newport hướng dẫn cách tập
+                trung sâu và tạo ra giá trị thực sự trong công việc.
+              </p>
+              <div class="card-meta">
+                Thể loại: Năng suất, Tập trung • Hoàn thành: 20/01/2025
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Thông Tin Về Tôi -->
+      <section id="about" class="section">
+        <h2 class="section-title">Thông Tin Về Tôi</h2>
+
+        <div class="about-profile">
+          <div class="profile-avatar">👨‍💻</div>
+          <h3 class="profile-name">Xin chào, tôi là Blog Owner!</h3>
+          <p class="profile-bio">
+            Tôi là một người đam mê học hỏi và chia sẻ kiến thức. Với niềm yêu
+            thích đọc sách, xem các video giáo dục và khám phá những điều mới
+            mẻ, tôi muốn tạo ra một không gian để tổng hợp và chia sẻ những bài
+            học quý giá mà mình thu được.
+          </p>
+        </div>
+      </section>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Blog Cá Nhân. Made with ❤️ for sharing knowledge.</p>
-        <div class="social-links">
-            <a href="#">📘 Facebook</a>
-            <a href="#">📺 YouTube</a>
-            <a href="#">📧 Email</a>
-            <a href="#">🐙 GitHub</a>
-        </div>
+      <p>&copy; 2024 Blog Cá Nhân. Made with ❤️ for sharing knowledge.</p>
+      <div class="social-links">
+        <a href="#">📘 Facebook</a>
+        <a href="#">📺 YouTube</a>
+        <a href="#">📧 Email</a>
+        <a href="#">🐙 GitHub</a>
+      </div>
     </footer>
 
     <script>
-        function showSection(sectionId) {
-            // Ẩn tất cả sections
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Bỏ active class khỏi tất cả nav links
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // Hiển thị section được chọn
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Thêm active class cho nav link được click
-            event.target.classList.add('active');
-        }
-
-        // Khởi tạo trang
-        document.addEventListener('DOMContentLoaded', function() {
-            // Đảm bảo trang chủ được hiển thị khi load
-            showSection('home');
+      function showSection(sectionId) {
+        // Ẩn tất cả sections
+        const sections = document.querySelectorAll(".section");
+        sections.forEach((section) => {
+          section.classList.remove("active");
         });
+
+        // Bỏ active class khỏi tất cả nav links
+        const navLinks = document.querySelectorAll(".nav-link");
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+        });
+
+        // Hiển thị section được chọn
+        document.getElementById(sectionId).classList.add("active");
+
+        // Thêm active class cho nav link được click
+        event.target.classList.add("active");
+      }
+
+      // Khởi tạo trang
+      document.addEventListener("DOMContentLoaded", function () {
+        // Đảm bảo trang chủ được hiển thị khi load
+        showSection("home");
+      });
     </script>
-</body>
+  </body>
 </html>
