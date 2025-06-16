@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "rating": 5,
+    "summary": "Cuốn sách về cách xây dựng thói quen tốt và phá bỏ thói quen xấu thông qua những thay đổi nhỏ nhưng mạnh mẽ",
+    "review": "Một cuốn sách tuyệt vời về cách thay đổi bản thân thông qua những thói quen nhỏ. James Clear đã trình bày một cách rất khoa học và thực tế về cách thức hoạt động của thói quen. Cuốn sách cung cấp framework 4 bước: Cue, Craving, Response, Reward để xây dựng thói quen tốt và phá bỏ thói quen xấu. Điều tôi thích nhất là các ví dụ thực tế và actionable tips mà tác giả đưa ra.",
+    "coverImage": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=300&h=400&fit=crop&crop=center",
+    "dateAdded": "2025-01-09T14:20:00.000Z"
+  },
+  {
+    "id": 2,
+    "title": "Deep Work",
+    "author": "Cal Newport",
+    "rating": 4,
+    "summary": "Hướng dẫn cách tập trung làm việc hiệu quả trong thời đại số, tránh xa sự phân tâm và tạo ra giá trị thực sự",
+    "review": "Cuốn sách giúp tôi hiểu được tầm quan trọng của việc tập trung sâu trong công việc. Cal Newport đã chỉ ra rằng trong thời đại thông tin, khả năng tập trung sâu vào một việc mà không bị phân tâm là một kỹ năng quý giá. Tác giả đưa ra nhiều chiến lược thực tế để phát triển khả năng deep work, từ việc tạo môi trường làm việc phù hợp đến cách quản lý thời gian hiệu quả.",
+    "coverImage": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop&crop=center",
+    "dateAdded": "2025-01-08T09:15:00.000Z"
+  }
+]

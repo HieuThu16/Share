@@ -1,0 +1,22 @@
+{
+  "name": "blog-ca-nhan",
+  "version": "1.0.0",
+  "description": "Blog cá nhân chia sẻ kiến thức từ YouTube và review sách",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step required'",
+    "start": "vercel dev"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [
+    "blog",
+    "youtube",
+    "books",
+    "review",
+    "knowledge-sharing"
+  ],
+  "author": "Blog Owner",
+  "license": "MIT"
+}
